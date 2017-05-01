@@ -1,8 +1,8 @@
 const Holidays = require('date-holidays');
 const moment = require('moment');
 
-function addYear(hd, year, data, min, max) {
-    data[year] = hd.getHolidays(year).filter((day) => {
+function addYear(hd, year, min, max) {
+    return hd.getHolidays(year).filter((day) => {
             const d = moment(day.date);
             if (day.type === 'public') {
                 if (d.isSame(min) || d.isSame(max)) {
@@ -22,16 +22,15 @@ function addYear(hd, year, data, min, max) {
 
 exports.holidaysBetween = function(min, max, locale) {
     const hd = new Holidays(locale);
-    const data = {};
-
-    var years = [];
+    let years = [];
+    let data = [];
 
     for(var i=min.year(); i<=max.year(); i++) {
         years.push(i);
     }
 
     years.forEach((year) => {
-        addYear(hd, year, data, min, max);
+        data = data.concat(addYear(hd, year, min, max));
     });
 
     return data;
