@@ -1,0 +1,15 @@
+{
+  "name": "dayoff",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "me@jfroffice.me",
+  "license": "MIT",
+  "dependencies": {
+    "date-holidays": "^0.1.9",
+    "moment": "^2.18.1"
+  }
+}
